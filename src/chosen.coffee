@@ -49,7 +49,8 @@ angular.module('localytics.directives').directive 'chosen', ['$timeout', ($timeo
         # Update the value in options. Set the default texts again. Update message.
         attr.$observe key, (value) ->
           options[snakeCase(key)] = scope.$eval(value)
-          chosen.set_default_text();
+          if chosen
+            chosen.set_default_text();
           updateMessage();
 
         options[snakeCase(key)] = scope.$eval(value)
