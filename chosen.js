@@ -39,7 +39,9 @@
             if (__indexOf.call(CHOSEN_OPTION_WHITELIST, key) >= 0) {
               attr.$observe(key, function(value) {
                 options[snakeCase(key)] = scope.$eval(value);
-                chosen.set_default_text();
+                if (chosen) {
+                  chosen.set_default_text();
+                }
                 return updateMessage();
               });
               return options[snakeCase(key)] = scope.$eval(value);
